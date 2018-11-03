@@ -19,7 +19,14 @@ Finally, the goal would be finding an **utopian richness level and political reg
 The main point would be finding a way to determine our utopian regime. 
 
 # Research questions
-A list of research questions you would like to address during the project. 
+
+Are there **correlations** between number of protests (for rights or regime change) and other varibales like richness of the country, political regime, etc?
+
+Are the protests based in poor countries **less heard** than the ones in rich countries?
+
+Is the **new technologies** a good thing for protests? (are the protests more and more heard thanks to internet, media, etc?)
+
+Are there more protests in countries with **many rights**? (people in countries with many rights are free to protests, contrary to other regime like dictatorship. It can lead to this paradox: more protests where there are more rights)
 
 # Dataset
 List the dataset(s) you want to use, and some ideas on how do you expect to get, manage, process and enrich it/them. Show us you've read the docs and some examples, and you've a clear idea on what to expect. Discuss data size and format if relevant.
