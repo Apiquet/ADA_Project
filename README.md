@@ -65,7 +65,19 @@ we hoped that the "protests" ones are enough represented. We verified that throu
 We got: **3 879 769**, that seems to be enough for our project.
 
 # A list of internal milestones up until project milestone 2
-Add here a sketch of your planning for the next project milestone.
+
+**09/11/2018:** preprocess dataset (through GoogleBigData queries) to extract the usable data for our project (GDELT v2 data related to protests, tables with events code, country 
+codes, etc). Getting all data we need to achieve our project.
+
+**13/11/2018:** find a way to handle the data in its size (how to extract some statistics through a notebook).
+
+**16/11/2018:** getting the first statistics and correlations we will need to answer the first reseach questions.
+
+**18/11/2018:** we should have a better idea of the usable data at this point, it's time to define our definitive plan for the project.
+
+**21/11/2018:** find a smart way to visualize a kind of protests (for instance: for rights) on a world map (thanks to folium).
+
+**24/11/2018:** verifying the code quality, the comments, the documentations we provided for the milestone 2.
 
 # Questions for TAa
 Add here some questions you have for us, in general or project-specific.
