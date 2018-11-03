@@ -3,7 +3,7 @@
 # Abstract
 A 150 word description of the project idea, goals, dataset used. What story you would like to tell and why? What's the motivation behind your project?
 
-We are going to take the GDELT v2 dataset. As there are many kinds of information, we got several ideas. The one we decided to follow is:
+We are going to take the GDELT v2 dataset, it inspired us the following project:
 
 Analysing the protests for leadership change, for rights and for change in institutions or regime around the world. 
 
