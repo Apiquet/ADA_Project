@@ -28,10 +28,15 @@ List the dataset(s) you want to use, and some ideas on how do you expect to get,
 
 The "GDELT 2.0 Event Database" dataset is composed of all we need to achieve our project. Indeed, this main dataset is composed of:
 > The date of the event (MonthYear)
+
 > The code for the actor that includes geographic, class, ethnic, religious, and type classes (Actor1Code)
+
 > The country code (Actor1CountryCode)
+
 > The code which refers the event type (EventBaseCode)
+
 > The number of mentions of the event (NumMentions) to see how much the event was covered/heard (there are also NumSources, NumArticles and AvgTone)
+
 (There are more data but less relevant for our project)
 
 ### 2- How are we going to manage the data
