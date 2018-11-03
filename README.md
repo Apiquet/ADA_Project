@@ -1,4 +1,4 @@
-# Title
+# Finding an utopian richness level and politicial regime based on the protests
 
 # Abstract
 A 150 word description of the project idea, goals, dataset used. What story you would like to tell and why? What's the motivation behind your project?
@@ -10,13 +10,13 @@ We are going to take the **GDELT v2** dataset, it inspired us the following proj
 First, we would like to find **correlations** between the number of each kind of protest and other variables (`richness` of the country, the `political regime`, the `date` (is there 
 less and less protests in all countries?), etc).
 
-Second, we want to find how **much the protests are heard** depending of the `country`, of the `political regime` or `date` (the dataset provides the number of mentions of the events
+Second, we want to find **how much the protests are heard** depending of the `country`, of the `political regime` or `date` (the dataset provides the number of mentions of the events
 in sources, articles, etc). 
 
 Third, finding a way to **visualize** each kind of protest on a world map would be interesting. 
 
-Finally, the goal would be finding an **utopian richness level and political regime**. We could face to a wrong result cause of dictatorial regimes where there is no protest, 
-the main point would be finding a way to determine our utopian regime. 
+Finally, the goal would be finding an **utopian richness level and political regime**. We could face to a wrong result cause of dictatorial regimes where there is no protest. 
+The main point would be finding a way to determine our utopian regime. 
 
 # Research questions
 A list of research questions you would like to address during the project. 
