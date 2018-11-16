@@ -59,7 +59,7 @@ on the country (maybe more the country is rich more the protest is heard), on th
 
 As the dataset is pretty big, we expected from it to get enough data to avoid finding conclusions not representative of the real world. However, as there are many kinds of events,
 
-we hoped that the "protests" ones are enough represented. We verified that through a query: ''SELECT COUNT(EventBaseCode) FROM [gdelt-bq:gdeltv2.events] WHERE EventBaseCode LIKE '14%'''
+we hoped that the "protests" ones are enough represented. We verified that through a query: `SELECT COUNT(EventBaseCode) FROM [gdelt-bq:gdeltv2.events] WHERE EventBaseCode LIKE '14%'`
 (because the code for protests starts by '14'). Thanks to this query we found the number of events stored related to protests.
 
 We got: **3 879 769**, that seems to be enough for our project.
