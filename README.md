@@ -26,10 +26,12 @@ Are the protests based in poor countries **less heard** than the ones in rich co
 
 Are the **new technologies** a good thing for protests? (are the protests more and more heard thanks to internet, media, etc?)
 
-Are there more protests in countries where the citizens enjoy **many rights**? (people in countries with many rights are free to protests, contrary to other regime like dictatorship. It can lead to this paradox: more protests where there are more rights)
+Are there more protests in countries where the citizens enjoy **many rights**? (people in countries with many rights are free to protests, contrary to other regime like dictatorship. 
+It can lead to this paradox: more protests where there are more rights)
 
 # Dataset
-List the dataset(s) you want to use, and some ideas on how do you expect to get, manage, process and enrich it/them. Show us you've read the docs and some examples, and you've a clear idea on what to expect. Discuss data size and format if relevant.
+List the dataset(s) you want to use, and some ideas on how do you expect to get, manage, process and enrich it/them. Show us you've read the docs and some examples, and you've a clear idea on what to expect. 
+Discuss data size and format if relevant.
 
 #### 1- Dataset description
 
@@ -81,27 +83,13 @@ For example, to define the `United-States of America`, the csv files use "USA", 
 "USA" everywhere to falicitate analysis.
 **country_codes_iso2_to_iso3.csv** and **country_code_to_name.csv** allow us to achieve these conversions.
 
-Let's see the countries_stats.csv file: data got from: https://www.kaggle.com/fernandol/countries-of-the-world/version/1
+Let's see the countries_stats.csv file: 
+
+data got from: https://www.kaggle.com/fernandol/countries-of-the-world/version/1
+
 Data available: Country,
-Region,
-Population,
-Area (sq. mi.),
-Pop. Density (per sq. mi.),
-Coastline (coast/area ratio),
-Net migration,
-Infant mortality (per 1000 births),
-GDP ($ per capita),
-Literacy (%),
-Phones (per 1000),
-Arable (%),
-Crops (%),
-Other (%),
-Climate,
-Birthrate,
-Deathrate,
-Agriculture,
-Industry,
-Service.
+Region,Population,Area (sq. mi.),Pop. Density (per sq. mi.),Coastline (coast/area ratio),Net migration,Infant mortality (per 1000 births),GDP ($ per capita),Literacy (%),
+Phones (per 1000),Arable (%),Crops (%),Other (%),Climate,Birthrate,Deathrate,Agriculture,Industry,Service.
 
 
 Meaning of climate:
