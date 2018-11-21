@@ -91,12 +91,14 @@ Data available: Country,
 Region,Population,Area (sq. mi.),Pop. Density (per sq. mi.),Coastline (coast/area ratio),Net migration,Infant mortality (per 1000 births),GDP ($ per capita),Literacy (%),
 Phones (per 1000),Arable (%),Crops (%),Other (%),Climate,Birthrate,Deathrate,Agriculture,Industry,Service.
 
+Most of the variables don't need to be explain as `population`, `Area (sq. mi.)`, `Infant mortality`, etc. 
+As we wordered the meaning of climate, here the explanation we found:
 
 Meaning of climate:
-1- Dry tropical
-2- Wet tropical
-3- Temperate humid subtropical and temperate continental
-4- Dry hot summers and wet winters
+1= Dry tropical, 
+2= Wet tropical, 
+3= Temperate humid subtropical and temperate continental, 
+4= Dry hot summers and wet winters
 
 # A list of internal milestones up until project milestone 2
 
@@ -112,5 +114,28 @@ codes, etc). Getting all needed data to achieve our project.
 **21/11/2018:** find a smart way to visualize a kind of protests (for instance: for rights) on a world map (thanks to folium).
 
 **24/11/2018:** verifying the code quality, the comments, the documentations we provided for the milestone 2.
+
+# A list of internal milestones until Dec. 16
+
+**29/11/2018:** deadline for finding new statistics on the countries (already more than 20 but it could be interesting to find other variables to evaluate.
+
+**31/11/2018:** doing the analysis on each country but depending on the year. Finding a way to visualize the evolution of the protests numbers year per year
+
+**02/12/2018:** finding impact of each variables on the protests number on each country based on the year
+As we have the number of protests per year and statistics on each country per year, we should be able to see the influence of each variable.
+For instance, is a country increase a lot his GDP ($ per capita) and not the other variables, and the number of protests decrease we could assume that they are related, etc
+(that's just a simple example).
+
+**05/12/2018:** we though about implementing a dynamic world map that show the protests days by days in a quick way (to help you understanding what we mean, here an
+example of the result we would like: https://www.globalforestwatch.org/map
+
+**08/12/2018:** we got almost all the results we wanted, we wrote good comments and explanations. The documentation is well done. We choose the way to present our work:
+a 4-page PDF document or a data story in a platform like a blog post.
+
+**14/12/2018:** We got all the result we wanted. Our visualizations are good. The report or the data story through a platform is done. 
+
+**15/12/2018:** Last verifications to verify everything. 
+
+
 
 
