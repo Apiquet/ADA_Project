@@ -64,6 +64,24 @@ we hoped that the "protests" ones are enough represented. We verified that throu
 
 We got: **3 879 769**, that seems to be enough for our project.
 
+#### 4- Data description
+
+- We are using the data available at the following link: https://bigquery.cloud.google.com/table/gdelt-bq:gdeltv2.events
+This is a context of `big data`: around **400 000 000** of rows.
+
+- As we said above, we need to filter this rows based on `event code` column. To achieve that, we need to know the meaning of this code:
+**eventcodes.csv** gives us this data.
+
+- Then, we need to get data on all the countries. Anything can be good, we need to have many variables to compare the impact of each ones on the number of protests.
+**country_by_income.csv** and **countries_stats.csv** give us what we need. Thanks to these files, we have access to the average income, area of the country, population 
+density, net migration, infant mortality, deathrate, climate, etc of each country. 
+
+- As each data define the country either with a code in ISO2, either in ISO3 or with the country name we need to convert each ones with the same convention.
+For example, to define the `United-States of America`, the csv files use "USA", "US" or "United-States of America", so we need to do some process to put for instance
+"USA" everywhere to falicitate analysis.
+**country_codes_iso2_to_iso3.csv** and **country_code_to_name.csv** allow us to achieve these conversions.
+
+
 # A list of internal milestones up until project milestone 2
 
 **09/11/2018:** preprocess dataset (through GoogleBigData queries) to extract the usable data for our project (GDELT v2 data related to protests, tables with events code, country 
@@ -79,5 +97,4 @@ codes, etc). Getting all needed data to achieve our project.
 
 **24/11/2018:** verifying the code quality, the comments, the documentations we provided for the milestone 2.
 
-# Questions for TAa
-Add here some questions you have for us, in general or project-specific.
+
