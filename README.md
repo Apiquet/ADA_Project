@@ -81,6 +81,34 @@ For example, to define the `United-States of America`, the csv files use "USA", 
 "USA" everywhere to falicitate analysis.
 **country_codes_iso2_to_iso3.csv** and **country_code_to_name.csv** allow us to achieve these conversions.
 
+Let's see the countries_stats.csv file: data got from: https://www.kaggle.com/fernandol/countries-of-the-world/version/1
+Data available: Country,
+Region,
+Population,
+Area (sq. mi.),
+Pop. Density (per sq. mi.),
+Coastline (coast/area ratio),
+Net migration,
+Infant mortality (per 1000 births),
+GDP ($ per capita),
+Literacy (%),
+Phones (per 1000),
+Arable (%),
+Crops (%),
+Other (%),
+Climate,
+Birthrate,
+Deathrate,
+Agriculture,
+Industry,
+Service.
+
+
+Meaning of climate:
+1- Dry tropical
+2- Wet tropical
+3- Temperate humid subtropical and temperate continental
+4- Dry hot summers and wet winters
 
 # A list of internal milestones up until project milestone 2
 
