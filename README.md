@@ -76,12 +76,14 @@ This is a context of `big data`: around **400 000 000** of rows.
 
 - Then, we need to get data on all the countries. Anything can be good, we need to have many variables to compare the impact of each ones on the number of protests.
 **country_by_income.csv** and **countries_stats.csv** give us what we need. Thanks to these files, we have access to the average income, area of the country, population 
-density, net migration, infant mortality, deathrate, climate, etc of each country. 
+density, net migration, infant mortality, deathrate, climate, etc of each country
+Got from: http://datatopics.worldbank.org/world-development-indicators/the-world-by-income-and-region.html and https://www.kaggle.com/fernandol/countries-of-the-world/version/1
 
 - As each data define the country either with a code in ISO2, either in ISO3 or with the country name we need to convert each ones with the same convention.
 For example, to define the `United-States of America`, the csv files use "USA", "US" or "United-States of America", so we need to do some process to put for instance
 "USA" everywhere to falicitate analysis.
-**country_codes_iso2_to_iso3.csv** and **country_code_to_name.csv** allow us to achieve these conversions.
+**country_codes_iso2_to_iso3.csv** and **country_code_to_name.csv** allow us to achieve these conversions, 
+there are from: https://github.com/lukes/ISO-3166-Countries-with-Regional-Codes/blob/master/all/all.csv
 
 Let's see the **countries_stats.csv** file: 
 
