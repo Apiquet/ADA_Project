@@ -34,7 +34,7 @@ List the dataset(s) you want to use, and some ideas on how do you expect to get,
 Discuss data size and format if relevant.
 
 #### 1- Dataset description
-
+GDELT 2.0
 The "GDELT 2.0 Event Database" dataset is composed of all we need to achieve our project. Indeed, this main dataset is composed of:
 > The date of the event (MonthYear)
 
@@ -45,6 +45,37 @@ The "GDELT 2.0 Event Database" dataset is composed of all we need to achieve our
 > The code which refers the event type (EventBaseCode)
 
 > The number of mentions of the event (NumMentions) to see how much the event was covered/heard (there are also NumSources, NumArticles and AvgTone)
+
+
+GDP growth world bank.csv and GINI per country worldbank.csv
+https://data.worldbank.org
+These two dataset are the estimations of the Gross Domestic Product (GDP) and the Index of Inequality        (GINI) for each country , from 1960 to 2017. These datasets will be usefull economical and social indicator to understand the protestation in different countries.
+> The country code
+> GDP index
+
+
+DataCorruptionPerceptionIndex2000_2017.xlsx 
+https://www.transparency.org
+This data set shows the estimated Corruption index (political and buisness corruption) for each country from 1998 to 2015. 
+> The country code
+> Corruption perception index
+
+Human Development Index (HDI).csv
+http://hdr.undp.org/en/data
+Dataset of the HDI for each country from 1990 to 2017.
+HDI a good indicator of the life expectancy and education of people in the country.
+The definition of HDI from wikipedia:
+"The Human Development Index (HDI) is a statistic composite index of life expectancy, education, and per capita income indicators"
+> The country code
+> Human Developement Index
+
+
+World press freedom.csv : 
+https://rsf.org/fr/donnees-classement
+https://en.wikipedia.org/wiki/Press_Freedom_Index 
+This data-set shows the score of each country concerning the press freedom from 2002 to 2018
+> The country code
+> Press Freedom index
 
 (There are more data but less relevant for our project)
 
