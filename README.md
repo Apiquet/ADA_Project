@@ -83,7 +83,7 @@ For example, to define the `United-States of America`, the csv files use "USA", 
 "USA" everywhere to falicitate analysis.
 **country_codes_iso2_to_iso3.csv** and **country_code_to_name.csv** allow us to achieve these conversions.
 
-Let's see the countries_stats.csv file: 
+Let's see the **countries_stats.csv** file: 
 
 data got from: https://www.kaggle.com/fernandol/countries-of-the-world/version/1
 
@@ -99,6 +99,9 @@ Meaning of climate:
 2= Wet tropical, 
 3= Temperate humid subtropical and temperate continental, 
 4= Dry hot summers and wet winters
+
+- A json file, **world-countries.json**, from folium github: https://github.com/python-visualization/folium/blob/master/examples/data/world-countries.json
+This json file helps us visualizing data on a world map
 
 # A list of internal milestones up until project milestone 2
 
@@ -126,15 +129,21 @@ As we have the number of protests per year and statistics on each country per ye
 For instance, is a country increase a lot his GDP ($ per capita) and not the other variables, and the number of protests decrease we could assume that they are related, etc
 (that's just a simple example).
 
-**05/12/2018:** we though about implementing a dynamic world map that show the protests days by days in a quick way (to help you understanding what we mean, here an
+**05/12/2018:** exploiting the `AvgTone` column that gives us the average “tone” of all documents containing one or more mentions of this event.
+The score ranges from -100 (extremely negative) to +100 (extremely positive). We would like to find what influence how much a protest is heard in the world.
+Is a protest in a country with better `income per cap` more heard than another in an other country? (doing that with many variables)
+Remark: more mentions there are about a protest, more this protest is "heard" in the world (more the `AvgTone` is high, more a protest is heard)
+We would also use: `NumArticles`, `NumSources` and `NumMentions`
+
+**08/12/2018:** we though about implementing a dynamic world map that show the protests days by days in a quick way (to help you understanding what we mean, here an
 example of the result we would like: https://www.globalforestwatch.org/map
 
-**08/12/2018:** we got almost all the results we wanted, we wrote good comments and explanations. The documentation is well done. We choose the way to present our work:
+**10/12/2018:** we got almost all the results we wanted, we wrote good comments and explanations. The documentation is well done. We choose the way to present our work:
 a 4-page PDF document or a data story in a platform like a blog post.
 
-**14/12/2018:** We got all the result we wanted. Our visualizations are good. The report or the data story through a platform is done. 
+**15/12/2018:** We got all the result we wanted. Our visualizations are good. The report or the data story through a platform is done. 
 
-**15/12/2018:** Last verifications to verify everything. 
+**16/12/2018:** Last verifications to verify everything. 
 
 
 
