@@ -104,20 +104,20 @@ Meaning of climate:
 - A json file, **world-countries.json**, from folium github: https://github.com/python-visualization/folium/blob/master/examples/data/world-countries.json
 This json file helps us visualizing data on a world map
 
-GDP growth world bank.csv and GINI per country worldbank.csv
+- **GDP growth world bank.csv** and **GINI per country worldbank.csv**
 https://data.worldbank.org
 These two dataset are the estimations of the Gross Domestic Product (GDP) and the Index of Inequality        (GINI) for each country , from 1960 to 2017. These datasets will be usefull economical and social indicator to understand the protestation in different countries.
 > The country code
 > GDP index
 
 
-DataCorruptionPerceptionIndex2000_2017.xlsx 
+- **DataCorruptionPerceptionIndex2000_2017.xlsx**
 https://www.transparency.org
 This data set shows the estimated Corruption index (political and buisness corruption) for each country from 1998 to 2015. 
 > The country code
 > Corruption perception index
 
-Human Development Index (HDI).csv
+- **Human Development Index (HDI).csv**
 http://hdr.undp.org/en/data
 Dataset of the HDI for each country from 1990 to 2017.
 HDI a good indicator of the life expectancy and education of people in the country.
@@ -127,7 +127,7 @@ The definition of HDI from wikipedia:
 > Human Developement Index
 
 
-World press freedom.csv : 
+- **World press freedom.csv** : 
 https://rsf.org/fr/donnees-classement
 https://en.wikipedia.org/wiki/Press_Freedom_Index 
 This data-set shows the score of each country concerning the press freedom from 2002 to 2018
