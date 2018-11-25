@@ -170,10 +170,10 @@ example of the result we would like: https://www.globalforestwatch.org/map
 **10/12/2018:** we got almost all the results we wanted, we wrote good comments and explanations. The documentation is well done. We choose the way to present our work:
 a 4-page PDF document or a data story in a platform like a blog post.
 
-**15/12/2018:** We got all the result we wanted. Our visualizations are good. The report or the data story through a platform is done. 
+**14/12/2018:** We got all the result we wanted. Our visualizations are good. The report or the data story through a platform is done. 
 
-**16/12/2018:** Last verifications to verify everything. 
+**15/12/2018:** Last verifications. 
 
+**21/12/2018:** Design of the poster, presentation ready. 
 
-
-
+**Presentation J-2:** Printing the poster.
