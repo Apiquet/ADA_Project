@@ -147,7 +147,7 @@ codes, etc). Getting all needed data to achieve our project.
 
 **24/11/2018:** verifying the code quality, the comments, the documentations we provided for the milestone 2.
 
-# A list of internal milestones until Dec. 16
+# A list of internal milestones until the presentation:
 
 **29/11/2018:** deadline for finding new statistics on the countries (already more than 20 but it could be interesting to find other variables to evaluate.
 
