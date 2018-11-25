@@ -130,12 +130,6 @@ https://en.wikipedia.org/wiki/Press_Freedom_Index
 This data-set shows the score of each country concerning the press freedom from 2002 to 2018
 We have access to  the country code and the press Freedom index
 
-(There are more data but less relevant for our project)
-
-
-- <u>**World press freedom.csv**</u> (<a> https://rsf.org/fr/donnees-classement </a>)(<a> https://en.wikipedia.org/wiki/Press_Freedom_Index </a>)
-
-This data-set shows the score of each country concerning the press freedom from 2002 to 2018
 
 
 # A list of internal milestones up until project milestone 2
