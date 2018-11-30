@@ -33,7 +33,6 @@ L.Marker.MovingMarker = L.Marker.extend({
         } else {
             this._durations = this._createDurations(this._latlngs, durations);
         }
-
         this._currentDuration = 0;
         this._currentIndex = 0;
 
@@ -121,8 +120,10 @@ L.Marker.MovingMarker = L.Marker.extend({
     },
 
     moveTo: function(latlng, duration) {
+		
         this._stopAnimation();
         this._latlngs = [this.getLatLng(), L.latLng(latlng)];
+
         this._durations = [duration];
         this._state = L.Marker.MovingMarker.notStartedState;
         this.start();
@@ -132,8 +133,9 @@ L.Marker.MovingMarker = L.Marker.extend({
     addStation: function(pointIndex, duration) {
         if (pointIndex > this._latlngs.length - 2 || pointIndex < 1) {
             return;
-        }
+        }		
         this._stations[pointIndex] = duration;
+
     },
 
     onAdd: function (map) {
@@ -185,6 +187,8 @@ L.Marker.MovingMarker = L.Marker.extend({
             this._animate(timestamp);
         }, this, true);
         this._animRequested = true;
+		
+		
     },
 
     _resumeAnimation: function() {
@@ -241,7 +245,9 @@ L.Marker.MovingMarker = L.Marker.extend({
             // test if there is a station at the end of the line
             if (stationDuration !== undefined) {
                 if (elapsedTime < stationDuration) {
-                    this.setLatLng(this._latlngs[lineIndex + 1]);
+                    this.setLatLng(this._latlngs[lineIndex + 1]);				
+					
+					L.circle(this.getLatLng(), 80, {color: "#ff7800", weight: 2}).addTo(map);					  
                     return null;
                 }
                 elapsedTime -= stationDuration;
@@ -259,6 +265,7 @@ L.Marker.MovingMarker = L.Marker.extend({
                     // place the marker at the end, else it would be at
                     // the last position
                     this.setLatLng(this._latlngs[this._latlngs.length - 1]);
+
                     this.stop(elapsedTime);
                     return null;
                 }
