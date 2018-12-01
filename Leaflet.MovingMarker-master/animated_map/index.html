@@ -17,6 +17,8 @@
     <!-- CSS -->
     <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
     <link rel="stylesheet" href="style.css" />
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
 
 </head>
 
@@ -24,10 +26,13 @@
 
 <body>
 
+	<div id="hidden_date" style="display: none;">0</div>
 
     <main>
-        <h1> Demo of Leaflet.MovingMarker </h1>
-
+		<div class="alert alert-info" style="padding:0px;margin:3px">
+		  <b>Current date: </b> <div id="date"></div>
+		</div>
+		
         <section>
             <div id="map">
             </div>

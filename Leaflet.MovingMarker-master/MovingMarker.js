@@ -21,9 +21,8 @@ L.Marker.MovingMarker = L.Marker.extend({
         loop: false,
     },
 
-    initialize: function (latlngs, durations, options) {
+    initialize: function (latlngs, dates, durations, options) {
         L.Marker.prototype.initialize.call(this, latlngs[0], options);
-
         this._latlngs = latlngs.map(function(e, index) {
             return L.latLng(e);
         });
@@ -35,7 +34,7 @@ L.Marker.MovingMarker = L.Marker.extend({
         }
         this._currentDuration = 0;
         this._currentIndex = 0;
-
+		this._dates = dates;
         this._state = L.Marker.MovingMarker.notStartedState;
         this._startTime = 0;
         this._startTimeStamp = 0;  // timestamp given by requestAnimFrame
@@ -245,8 +244,12 @@ L.Marker.MovingMarker = L.Marker.extend({
             // test if there is a station at the end of the line
             if (stationDuration !== undefined) {
                 if (elapsedTime < stationDuration) {
-                    this.setLatLng(this._latlngs[lineIndex + 1]);				
-					
+                    this.setLatLng(this._latlngs[lineIndex + 1]);	
+					var current_date = parseFloat(document.getElementById("hidden_date").innerHTML);
+					if(this._dates[lineIndex] > current_date){
+						document.getElementById("hidden_date").innerHTML = this._dates[lineIndex];
+						document.getElementById("date").innerHTML = this._dates[lineIndex].toString().substr(0, 4) + "/" + this._dates[lineIndex].toString().substr(4, 2) + "/" + this._dates[lineIndex].toString().substr(6, 2);
+					}
 					L.circle(this.getLatLng(), 80, {color: "#ff7800", weight: 2}).addTo(map);					  
                     return null;
                 }
@@ -306,6 +309,6 @@ L.Marker.MovingMarker = L.Marker.extend({
     }
 });
 
-L.Marker.movingMarker = function (latlngs, duration, options) {
-    return new L.Marker.MovingMarker(latlngs, duration, options);
+L.Marker.movingMarker = function (latlngs, dates, duration, options) {
+    return new L.Marker.MovingMarker(latlngs, dates, duration, options);
 };
