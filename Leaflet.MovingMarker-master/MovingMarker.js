@@ -21,7 +21,7 @@ L.Marker.MovingMarker = L.Marker.extend({
         loop: false,
     },
 
-    initialize: function (latlngs, dates, durations, options) {
+    initialize: function (latlngs, dates, types, durations, options) {
         L.Marker.prototype.initialize.call(this, latlngs[0], options);
         this._latlngs = latlngs.map(function(e, index) {
             return L.latLng(e);
@@ -35,6 +35,7 @@ L.Marker.MovingMarker = L.Marker.extend({
         this._currentDuration = 0;
         this._currentIndex = 0;
 		this._dates = dates;
+		this._types = types;
         this._state = L.Marker.MovingMarker.notStartedState;
         this._startTime = 0;
         this._startTimeStamp = 0;  // timestamp given by requestAnimFrame
@@ -248,9 +249,36 @@ L.Marker.MovingMarker = L.Marker.extend({
 					var current_date = parseFloat(document.getElementById("hidden_date").innerHTML);
 					if(this._dates[lineIndex] > current_date){
 						document.getElementById("hidden_date").innerHTML = this._dates[lineIndex];
-						document.getElementById("date").innerHTML = this._dates[lineIndex].toString().substr(0, 4) + "/" + this._dates[lineIndex].toString().substr(4, 2) + "/" + this._dates[lineIndex].toString().substr(6, 2);
+						document.getElementById("date").innerHTML = "from " + this._dates[0].toString().substr(0, 4) + "/" + this._dates[0].toString().substr(4, 2) + "/" + this._dates[0].toString().substr(6, 2) + " to " + this._dates[lineIndex].toString().substr(0, 4) + "/" + this._dates[lineIndex].toString().substr(4, 2) + "/" + this._dates[lineIndex].toString().substr(6, 2);
 					}
-					L.circle(this.getLatLng(), 80, {color: "#ff7800", weight: 2}).addTo(map);					  
+					/*var circle_color = "";
+					switch(this._types[lineIndex].toString()) {
+						case '141':
+							circle_color = "#99ccff";
+							break;
+						case '142':
+							circle_color = "#ffcccc";
+							break;
+						case '143':
+							circle_color = "#660033";
+							break;
+						case '144':
+							circle_color = "#0000ff";
+							break;
+						case '145':
+							circle_color = "#339933";
+							break;
+						default:
+							circle_color = "#ff7800";
+					}*/
+					var element =  document.getElementById(this._types[lineIndex].toString());
+					if (typeof(element) != 'undefined' && element != null)
+					{
+					  	L.circle(this.getLatLng(), 80, {color: element.innerHTML.toString(), weight: 2}).addTo(map);					  
+					}
+					else{
+						L.circle(this.getLatLng(), 80, {color: '#ff7800', weight: 2}).addTo(map);					  
+					}
                     return null;
                 }
                 elapsedTime -= stationDuration;
@@ -309,6 +337,6 @@ L.Marker.MovingMarker = L.Marker.extend({
     }
 });
 
-L.Marker.movingMarker = function (latlngs, dates, duration, options) {
-    return new L.Marker.MovingMarker(latlngs, dates, duration, options);
+L.Marker.movingMarker = function (latlngs, dates, types, duration, options) {
+    return new L.Marker.MovingMarker(latlngs, dates, types, duration, options);
 };
