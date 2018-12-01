@@ -8,7 +8,7 @@ var tileUrl = 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
 layer = new L.TileLayer(tileUrl,
 {
     attribution: 'Maps © <a href=\"www.openstreetmap.org/copyright\">OpenStreetMap</a> contributors',
-    maxZoom: 3
+    maxZoom: 15
 });
 
 // add the layer to the map
