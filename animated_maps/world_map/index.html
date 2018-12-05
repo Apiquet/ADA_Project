@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+
+<html>
+<style>
+.dot {
+  height: 15px;
+  width: 15px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+}
+</style>
+<head>
+    <title> Leaflet.MovingMarker Demo Page </title>
+
+    <!-- META INFORMATION -->
+
+    <meta charset="UTF-8">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
+    <link rel="stylesheet" href="style.css" />
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+
+</head>
+
+
+
+<body>
+
+	<div id="hidden_date" style="display: none;">0</div>
+	<div id="140" style="display: none;">#A94444</div>
+	<div id="141" style="display: none;">#38B5B9</div>
+	<div id="142" style="display: none;">#ffffff</div>
+	<div id="143" style="display: none;">#FFA500</div>
+	<div id="144" style="display: none;">#000000</div>
+	<div id="145" style="display: none;">#ff0000</div>
+
+    <main>
+		<div class="alert alert-info" style="padding:0px;margin:3px;text-align:center;font-size:18px">
+			<div style="text-align:center;font-size:18px">
+				</br><b><u>Displaying protests </u></b> <div id="date"></div>
+			</div>
+			<div style="position: fixed;top: 0;right: 0;;font-size:12px">
+				<b><u>Legend:</u> </b> 
+				</br>Engage in political dissent: <span id="Engage" class="dot"></span>
+				, demonstrate or rally: <span id="Demonstrate" class="dot"></span>
+				, conduct hunger: <span id="hunger" class="dot"></span>
+				</br>Conduct strike or boycott: <span id="strike" class="dot"></span>
+				, obstruct passage: <span id="Obstruct" class="dot"></span>
+				, protest violently: <span id="violently" class="dot"></span>
+			</div>
+		  </div>
+		
+        <section>
+            <div id="map">
+            </div>
+        </section>
+
+
+    </main>
+	<script>
+		document.getElementById("Engage").style.backgroundColor = document.getElementById("140").innerHTML;
+		document.getElementById("Demonstrate").style.backgroundColor = document.getElementById("141").innerHTML;
+		document.getElementById("hunger").style.backgroundColor = document.getElementById("142").innerHTML;
+		document.getElementById("strike").style.backgroundColor = document.getElementById("143").innerHTML;
+		document.getElementById("Obstruct").style.backgroundColor = document.getElementById("144").innerHTML;
+		document.getElementById("violently").style.backgroundColor = document.getElementById("145").innerHTML;
+	</script>
+    <script type="text/javascript" src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
+    <script type="text/javascript" src="world_map_moving_marker.js"></script>
+    <script type="text/javascript" src="script.js"></script>
+
+
+</body>
+</html>
