@@ -1,8 +1,8 @@
 def updating_js_script(df, SCRIPT_PATH, markers_number=4, markers_speed=0.01, LatLong="[35.435804, 6.634183]", zoom="2"):
-    
     simulation_duration = len(df.index)/markers_number/markers_speed
     protests_coordinates="" 
     protests_counts=""
+    protests_colors=""
     protests_types=""
     protests_dates=""
     marker_declaration=""
@@ -11,6 +11,7 @@ def updating_js_script(df, SCRIPT_PATH, markers_number=4, markers_speed=0.01, La
     for marker_idx in range(1,markers_number+1):
         protests_coordinates = protests_coordinates + "\n var protests_coordinates" + str(marker_idx) + " = ["
         protests_dates = protests_dates + "\n var protests_dates" + str(marker_idx) + " = ["
+        protests_colors = protests_colors + "\n var protests_colors" + str(marker_idx) + " = ["
         protests_counts = protests_counts + "\n var protests_counts" + str(marker_idx) + " = ["
         protests_types = protests_types + "\n var protests_types" + str(marker_idx) + " = ["
         addstation_idx = 0
@@ -22,6 +23,8 @@ def updating_js_script(df, SCRIPT_PATH, markers_number=4, markers_speed=0.01, La
             protests_types = protests_types + df["event_code"].iloc[idx]  
             if 'count' in df:
                 protests_counts = protests_counts + df["count"].iloc[idx]
+            if 'colors' in df:
+                protests_colors = protests_colors + df["colors"].iloc[idx]
 
             if addstation_idx == 0 :
                     addstation_idx = 1
@@ -36,8 +39,12 @@ def updating_js_script(df, SCRIPT_PATH, markers_number=4, markers_speed=0.01, La
         protests_types = protests_types[:-1]
         protests_types = protests_types + "]"
         protests_counts = protests_counts[:-1]
-        protests_counts = protests_counts + "]"         
-        if 'count' in df:
+        protests_counts = protests_counts + "]"  
+        protests_colors = protests_colors[:-1]
+        protests_colors = protests_colors + "]"         
+        if 'colors' in df:
+            marker_declaration = marker_declaration + "\n var marker" + str(marker_idx) + " = L.Marker.movingMarker(protests_coordinates" + str(marker_idx) + ",protests_dates1,protests_colors"+ str(marker_idx) +"," + str(simulation_duration) + ", {autostart: true}).addTo(map);"
+        elif 'count' in df:
             marker_declaration = marker_declaration + "\n var marker" + str(marker_idx) + " = L.Marker.movingMarker(protests_coordinates" + str(marker_idx) + ",protests_dates1,protests_types" + str(marker_idx) +",protests_counts"+ str(marker_idx) +"," + str(simulation_duration) + ", {autostart: true}).addTo(map);"
         else:
             marker_declaration = marker_declaration + "\n var marker" + str(marker_idx) + " = L.Marker.movingMarker(protests_coordinates" + str(marker_idx) + ",protests_dates1,protests_types" + str(marker_idx) +"," + str(simulation_duration) + ", {autostart: true}).addTo(map);"
@@ -51,6 +58,8 @@ def updating_js_script(df, SCRIPT_PATH, markers_number=4, markers_speed=0.01, La
     
     lines.append(mapfit+'\n')
     lines.append(protests_coordinates+'\n')
+    if 'colors' in df:
+        lines.append(protests_colors+'\n')
     if 'count' in df:
         lines.append(protests_counts+'\n')
     lines.append(protests_dates+'\n')
