@@ -9,6 +9,12 @@
   border-radius: 50%;
   display: inline-block;
 }
+#grad1 {
+  height: 30px;
+  width: 250px;
+  background-color: red; /* For browsers that do not support gradients */
+  background-image: linear-gradient(to left, green , white); /* Standard syntax (must be last) */
+}
 </style>
 <head>
     <title> Leaflet.MovingMarker Demo Page </title>
@@ -43,14 +49,11 @@
 			<div style="text-align:center;font-size:18px">
 				</br><b><u>Displaying protests </u></b> <div id="date"></div>
 			</div>
-			<div style="position: fixed;top: 0;right: 0;;font-size:12px">
+			<div style="position: fixed;top: 5px;right: 40px;;font-size:12px">
 				<b><u>Legend:</u> </b> 
-				</br>Engage in political dissent: <span id="Engage" class="dot"></span>
-				, demonstrate or rally: <span id="Demonstrate" class="dot"></span>
-				, conduct hunger: <span id="hunger" class="dot"></span>
-				</br>Conduct strike or boycott: <span id="strike" class="dot"></span>
-				, obstruct passage: <span id="Obstruct" class="dot"></span>
-				, protest violently: <span id="violently" class="dot"></span>
+				</br>Low number of protest to high
+				</br><div id="grad1"></div>
+
 			</div>
 		  </div>
 		

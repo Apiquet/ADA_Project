@@ -251,7 +251,7 @@ L.Marker.MovingMarker = L.Marker.extend({
 						document.getElementById("hidden_date").innerHTML = this._dates[lineIndex];
 						document.getElementById("date").innerHTML = "from " + this._dates[0].toString().substr(0, 4) + "/" + this._dates[0].toString().substr(4, 2) + "/" + this._dates[0].toString().substr(6, 2) + " to " + this._dates[lineIndex].toString().substr(0, 4) + "/" + this._dates[lineIndex].toString().substr(4, 2) + "/" + this._dates[lineIndex].toString().substr(6, 2);
 					}
-					L.circle(this.getLatLng(), 80, {color: this._colors[lineIndex], weight: 4}).addTo(map);					  
+					L.circle(this.getLatLng(), 80, {color: this._colors[lineIndex+1], fillColor: "#000000", weight: 4}).addTo(map);					  
 					
                     return null;
                 }
