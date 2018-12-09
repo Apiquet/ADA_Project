@@ -1,3 +1,4 @@
+import pandas as pd
 def updating_js_script(df, SCRIPT_PATH, markers_number=4, markers_speed=0.01, LatLong="[35.435804, 6.634183]", zoom="2"):
     simulation_duration = len(df.index)/markers_number/markers_speed
     protests_coordinates="" 
@@ -50,6 +51,7 @@ def updating_js_script(df, SCRIPT_PATH, markers_number=4, markers_speed=0.01, La
             marker_declaration = marker_declaration + "\n var marker" + str(marker_idx) + " = L.Marker.movingMarker(protests_coordinates" + str(marker_idx) + ",protests_dates1,protests_types" + str(marker_idx) +"," + str(simulation_duration) + ", {autostart: true}).addTo(map);"
 
     mapfit = 'var map = new L.Map(\'map\', {center:'+LatLong+',zoom:'+zoom+'});map.addLayer(layer);'
+    
     readFile = open(SCRIPT_PATH + "script_origin.js")
 
     lines = readFile.readlines()
@@ -71,3 +73,49 @@ def updating_js_script(df, SCRIPT_PATH, markers_number=4, markers_speed=0.01, La
     w.writelines([item for item in lines])
 
     w.close()
+    
+def converting_count_to_color(minimum, maximum, value):
+    minimum, maximum = float(minimum), float(maximum)
+    ratio = (value-minimum) / (maximum - minimum)
+    b = 0
+    r = 0
+    g = 255
+    if ratio < 0.2:
+        b = 255 * (-5*ratio+1)
+        r = 255 * (-2*ratio+1)
+    else:
+        g = 255 * (-1.66*ratio + 0.86)
+    hexa = '#%02x%02x%02x' % (int(r), int(g), int(b))
+    return '"' + hexa + '"'
+
+def adding_count_columns(df):
+    df['count'] = 0
+    List = []
+    count = []
+    index = 0
+    for value in df['coord_for_js']:
+        if value in List:
+            idx = List.index(value)
+            count[idx] = count[idx] + 1
+            df.iloc[index, df.columns.get_loc('count')] = count[idx]
+        else:        
+            List.append(value)
+            count.append(1)        
+            df.iloc[index, df.columns.get_loc('count')] = 1
+        index = index + 1
+    return df
+
+def getting_appropriate_format_df_for_js(df):
+    #converting all columns to string
+    for col in df:
+        df[col] = df[col].astype(str)
+    #getting a dataframe with appropriate format
+    df_converted = pd.DataFrame()
+    df_converted["coord_for_js"] = '[' + df['ActionGeo_Lat'] + ',' + df['ActionGeo_Long'] + '],'
+    df_converted["dates"] = df['SQLDATE']
+    df_converted["dates"] = '[' + df_converted['dates'].str[0:4] + df_converted['dates'].str[4:6] + df_converted['dates'].str[6:8] + '],'
+    df_converted["event_code"] = df['EventCode']
+    df_converted["event_code"] = '[' + df_converted['event_code'] + '],'
+    for col in df_converted:
+        df_converted[col] = df_converted[col].astype(str)
+    return df_converted
