@@ -2,7 +2,7 @@ import folium
 import pandas as pd
 
 def folium_map(df, x, y, location, countries_topodata, colormap, zoom=1):
-    results_map_income = folium.Map(location, tiles='cartodbpositron', zoom_start=zoom) 
+    results_map_income = folium.Map(location, tiles='OpenStreetMap', zoom_start=zoom) 
     #creating dictionary to easily find the UDC voting rate
     dictionary = df.set_index(x)[y]#clean_data.set_index('CantonID')['UDC']
     #Our own choropleth 
