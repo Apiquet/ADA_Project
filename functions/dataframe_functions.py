@@ -49,3 +49,27 @@ def adding_count_of_repeated_values(df):
             df.iloc[index, df.columns.get_loc('count')] = 1
         index = index + 1
     return df
+
+def filtering_df_date_country(df, date_start, date_end,country = ' '):
+    new_df = df[df.SQLDATE.astype(int) > date_start]
+    new_df = new_df[new_df.SQLDATE.astype(int) < date_end]
+    if country != ' ':
+        new_df = new_df[new_df.ActionGeo_FullName.str.contains(country)]
+    return new_df
+
+def removing_duplicated_locations(df):
+    size = len(df)
+    for j in range(0,10):
+        for index in range(0,size):
+            if index == 0 :
+                continue
+            if index >= size:
+                break
+            value = df.iloc[index, df.columns.get_loc('count')] 
+            if value < df.iloc[index-1, df.columns.get_loc('count')]:
+                latlong = df.iloc[index, df.columns.get_loc('LatLong')]
+                if latlong in df.iloc[index-1, df.columns.get_loc('LatLong')]:
+                    df = df.drop(df.index[index])
+                    index = index - 1
+                    size = size - 1
+    return df
