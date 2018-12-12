@@ -154,3 +154,59 @@ def get_df_for_countries_stats_visu(countries_all_stats, keep_US = True):
         chart_data[col] = chart_data[col] / max(chart_data[col]) * 100
     chart_data=chart_data.rename(columns={"Infant mortality (per 1000 births)": "Infant mortality","Income Group": "Income","Net migration": "Migration","Pop. Density (per sq. mi.)" :"Pop. Density", "Literacy (%)" : 'Literacy'})
     return chart_data
+
+def convert_year_columns_to_one(data):
+    data['GDP growth'] = 0
+    data['year'] = 0
+    data = data.loc[data.index.repeat(3)]
+    move = 0
+    col_p = 2
+    for j in range(0,128):
+        for i in range(0,3):
+            data.iloc[i+move, data.columns.get_loc('GDP growth')] = data.iloc[i+move, col_p+i]
+            data.iloc[i+move, data.columns.get_loc('year')] = list(data)[col_p+i]
+        move = move + 3
+    data = data.reset_index()
+    data = data.drop(['index','2016','2017','2018','Country Code'], 1)
+    data['year'] = data['year'].astype(str)
+    data = data.loc[data.index.repeat(12)]
+    move = 0
+    for j in range(0,386):
+        for i in range(0,12):
+            if i < 9:
+                data.iloc[i+move, data.columns.get_loc('year')] = data.iloc[i+move, data.columns.get_loc('year')] + '0' + str(i+1)
+            else:
+                data.iloc[i+move, data.columns.get_loc('year')] = data.iloc[i+move, data.columns.get_loc('year')] + str(i+1)       
+        move = move + 12
+    return data
+
+def displaying_visu_countries_stat(new_data):
+    my_dpi=96
+
+    # For each year:
+    for i in new_data.year.unique():
+
+        # initialize a figure
+        fig = plt.figure(figsize=(4050/my_dpi, 3000/my_dpi), dpi=my_dpi)
+
+        plt.rcParams.update({'font.size': 50})
+        plt.xlabel("Protests Count", fontsize=70)
+        plt.ylabel("GDP growth", fontsize=70)
+        plt.title("Month: "+str(i), fontsize=70 )
+
+        # Change color with c and alpha. I map the color to the X axis value.
+        tmp=new_data[ new_data.year == i ]
+
+        plt.scatter(tmp['count'], tmp['GDP growth'] , s=10*tmp['pop_density'], c = tmp['region'].cat.codes, cmap="Accent", alpha=0.6, edgecolors="white", linewidth=2)
+        #plt.legend()
+
+
+        plt.ylim(-5,10)
+        plt.xlim(-100,1100)
+        #plt.legend(fontsize=50) # using a size in points
+        #plt.legend(fontsize="x-large") # using a named size
+        # Save it
+        filename='GDP_growth_protests_count_'+str(i)+'.png'
+        plt.savefig('maps/GPD_Growth_protests_count/' + filename, dpi=96)
+        #plt.gca()
+
