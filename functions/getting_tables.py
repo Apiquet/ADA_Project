@@ -56,7 +56,8 @@ def open_and_clean_data(DATA_PATH):
     
     corruption_df = pd.read_csv(DATA_PATH + "DataCorruptionPerceptionIndex2000_2017.csv", encoding = "ISO-8859-1")
     corruption_df = corruption_df.drop(corruption_df.iloc[:,1:6], axis = 1)
-
+    protests_df_location = pd.read_csv(DATA_PATH + 'protests_location.csv')
+    protests_df_location=protests_df_location.dropna()
     
     #initilize empty dataframe with corresponding columns
     columns_data=['Country','2018', '2017', '2016', '2015', '2014','2013', '2012','2011', '2010', '2009','2008', '2007', '2006', '2005', '2004','2003', '2002']
@@ -117,7 +118,7 @@ In the algorithm bellow we parse these data to generate the dataframe
 
 According to wikipeddia, 2011 is missing because the report released in 2012 is titled '2011–2012' and cover both 2011 and 2012 in one column. We will later see what we can do to recover these missing data."""
     
-    return press_freedom_df, hdi_df, gini_df, gdp_df,corruption_df        
+    return press_freedom_df, hdi_df, gini_df, gdp_df,corruption_df,protests_df_location    
             
             
    

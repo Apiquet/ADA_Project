@@ -180,7 +180,7 @@ def convert_year_columns_to_one(data):
         move = move + 12
     return data
 
-def displaying_visu_countries_stat(new_data):
+def displaying_visu_countries_stat(new_data, DATA_PATH):
     my_dpi=96
 
     # For each year:
@@ -207,6 +207,6 @@ def displaying_visu_countries_stat(new_data):
         #plt.legend(fontsize="x-large") # using a named size
         # Save it
         filename='GDP_growth_protests_count_'+str(i)+'.png'
-        plt.savefig('maps/GPD_Growth_protests_count/' + filename, dpi=96)
+        plt.savefig(DATA_PATH + filename, dpi=96)
         #plt.gca()
 

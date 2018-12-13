@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+
+<html>
+<style>
+.dot {
+  height: 15px;
+  width: 15px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+}
+#grad1 {
+  height: 20px;
+  width: 250px;
+  background-color: red; /* For browsers that do not support gradients */
+  background-image: linear-gradient(to left, green , white); /* Standard syntax (must be last) */
+}
+</style>
+<head>
+    <title> Leaflet.MovingMarker Demo Page </title>
+
+    <!-- META INFORMATION -->
+
+    <meta charset="UTF-8">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
+    <link rel="stylesheet" href="style.css" />
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+
+</head>
+
+
+
+<body>
+
+	<div id="hidden_date" style="display: none;">0</div>
+
+    <main>
+		<div class="alert alert-info" style="padding:0px;margin:3px;text-align:center;font-size:18px">
+			<div style="text-align:center;font-size:18px">
+				</br><b><u>Displaying the protests' frequency</u></b> <div id="date"></div>
+			</div>
+			<div style="position: fixed;top: 5px;right: 40px;;font-size:12px">
+				<b><u>Legend:</u> </b> 
+				</br>Low number of protest to high
+				</br><div id="grad1"></div>
+
+			</div>
+		  </div>
+		
+        <section>
+            <div id="map">
+            </div>
+        </section>
+
+
+    </main>
+    <script type="text/javascript" src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
+    <script type="text/javascript" src="world_map_moving_marker.js"></script>
+    <script type="text/javascript" src="script.js"></script>
+
+
+</body>
+</html>
