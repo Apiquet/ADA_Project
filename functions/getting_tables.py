@@ -3,6 +3,47 @@ import numpy as np
 from math import pi
 import matplotlib.pyplot as plt
 
+
+def country_stat_creation(protests_df,country_by_income_2017,countries_stats,country_codes_to_name):
+        #Getting number of protests per country without any threshold
+    number_of_protests_per_country = protests_df.groupby(['Country Code']).size().reset_index(name='protests count')
+
+    #Extracting the two column we are interesting in
+    country_by_income_2017_filtered=country_by_income_2017[['Country Code','Income Group']]
+
+    #joining tables to get the country, the income group and the protests count in the same table
+    income_group_and_protests_count=pd.merge(country_by_income_2017_filtered, number_of_protests_per_country, how='right', on=['Country Code'])
+    
+
+
+    countries_stats_with_code=pd.merge(countries_stats, country_codes_to_name, how='left', on='Country Name')
+    countries_stats_with_code=countries_stats_with_code.dropna()
+
+    #Getting a dataframe with all the statistics by country!
+    countries_all_stats=pd.merge(countries_stats_with_code, income_group_and_protests_count, how='left', left_on='Country Code', right_on='Country Code')
+    countries_all_stats=countries_all_stats.dropna()
+    #Using countries that have more than 1 protest for the linear regression
+    countries_all_stats=countries_all_stats[countries_all_stats['protests count'] > 1]
+    return countries_all_stats
+    
+
+def load_countrycode(DATA_PATH):
+        #Getting conversion between fips104 and iso2 code for countries
+    country_codes_fips104_to_iso = pd.read_csv(DATA_PATH + "fips104_to_iso.csv", encoding = "ISO-8859-1")
+
+    #Getting conversion between iso2 and iso3 code for countries
+    country_codes_iso2_to_iso3 = pd.read_csv(DATA_PATH + "country_codes_iso2_to_iso3.csv", encoding = "ISO-8859-1")
+
+    #merging the two data to convert from Fips 104 to ISO3
+    country_codes_fips104_to_iso3 = pd.merge(country_codes_fips104_to_iso, country_codes_iso2_to_iso3, how='inner',\
+                                             left_on=['ISO 3166'], right_on=['ISO'])[['FIPS 10-4', 'ISO3']]
+
+    # Getting conversion between country code and country name
+    country_codes_to_name = pd.read_csv(DATA_PATH + "country_lat_long.csv", encoding = "ISO-8859-1")
+    country_codes_to_name=country_codes_to_name.rename(index=str, columns={"ISO3": "Country Code"})
+    country_codes_fips104_to_iso3=country_codes_fips104_to_iso3.rename(index=str, columns={"ISO3": "Country Code"})
+    return country_codes_to_name, country_codes_fips104_to_iso3
+
 def open_and_clean_data(DATA_PATH):
     hdi_df = pd.read_csv(DATA_PATH + "Human_Development_Index_(HDI).csv", encoding = "ISO-8859-1")
     hdi_df = hdi_df.drop(hdi_df.iloc[:,2:17], axis = 1)
