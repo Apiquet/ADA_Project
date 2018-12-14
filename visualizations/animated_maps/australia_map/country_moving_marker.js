@@ -253,6 +253,7 @@ L.Marker.MovingMarker = L.Marker.extend({
 						document.getElementById("date").innerHTML = "from " + this._dates[0].toString().substr(0, 4) + "/" + this._dates[0].toString().substr(4, 2) + "/" + this._dates[0].toString().substr(6, 2) + " to " + this._dates[lineIndex].toString().substr(0, 4) + "/" + this._dates[lineIndex].toString().substr(4, 2) + "/" + this._dates[lineIndex].toString().substr(6, 2);
 					}
 					var element =  document.getElementById(this._types[lineIndex].toString());
+					document.getElementById("protests_count").innerHTML = parseFloat(document.getElementById("protests_count").innerHTML)+1;
 					if (typeof(element) != 'undefined' && element != null)
 					{
 					  	L.circleMarker(this.getLatLng(), {color: element.innerHTML.toString(), opacity:0.05,weight: this._counts[lineIndex+1]}).addTo(map);

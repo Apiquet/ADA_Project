@@ -255,6 +255,7 @@ L.Marker.MovingMarker = L.Marker.extend({
 					var element =  document.getElementById(this._types[lineIndex].toString());
 					if (typeof(element) != 'undefined' && element != null)
 					{
+						document.getElementById("protests_count").innerHTML = parseFloat(document.getElementById("protests_count").innerHTML)+1;
 					  	L.circleMarker(this.getLatLng(), {color: element.innerHTML.toString(), opacity:0.05,weight: this._counts[lineIndex+1]}).addTo(map);
 					}
 					else{
