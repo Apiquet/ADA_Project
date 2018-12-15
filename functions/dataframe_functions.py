@@ -184,7 +184,7 @@ def displaying_visu_countries_stat(new_data, DATA_PATH):
     my_dpi=96
 
     # For each year:
-    for i in new_data.year.unique():
+    for i in new_data.year.dropna().unique():
 
         # initialize a figure
         fig = plt.figure(figsize=(4050/my_dpi, 3000/my_dpi), dpi=my_dpi)
@@ -197,7 +197,7 @@ def displaying_visu_countries_stat(new_data, DATA_PATH):
         # Change color with c and alpha. I map the color to the X axis value.
         tmp=new_data[ new_data.year == i ]
 
-        plt.scatter(tmp['count'], tmp['GDP growth'] , s=10*tmp['pop_density'], c = tmp['region'].cat.codes, cmap="Accent", alpha=0.6, edgecolors="white", linewidth=2)
+        plt.scatter(tmp['count'], tmp['GDP growth'] , s=10*tmp['pop_density'], c = tmp['region'].cat.codes.values, cmap="Accent", alpha=0.6, edgecolors="white", linewidth=2)
         #plt.legend()
 
 
