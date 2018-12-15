@@ -1,3 +1,20 @@
+ # <u><span style='color:red'>IMPORTANT NOTICE: </span></u>
+<br>
+
+# 1 - How to see our visualizations:
+
+### Please open: "visualizing_main_maps.html" 
+ in the main folder to see our main visualizations in one HTML page format
+(we are using iframe to embedded several html files, it doesn't allow to be opened through jupyter)
+
+
+
+# 2 - How to read our report:
+
+### As we choose to make a blog, please go to: https://ada-project.school.blog/
+
+==============================
+
 # Finding an utopian richness level and politicial regime based on the protests
 
 # Abstract

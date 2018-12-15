@@ -2,7 +2,8 @@ import pandas as pd
 import numpy as np
 from math import pi
 import matplotlib.pyplot as plt
-
+import seaborn as sns
+from math import pi
 np.random.seed(10)
 
 def magnify():
@@ -27,6 +28,61 @@ def highlight_text(data, color='red', text = ''):
         is_max = data.str.contains(text)
         return pd.DataFrame(np.where(is_max, attr, ''),
                             index=data.index, columns=data.columns)
+def gdp_growth_visualization(data, countries_all_stats,DATA_PATH):
+    data['2018'] = data['2017']
+    data = data.drop(['2014','2015'],1)
+    country_region = countries_all_stats[['Country Name','Region']]
+    data=pd.merge(data,country_region , how='right', on=['Country Name'])
+    data = data.dropna()
+    data=data.drop(data.columns[[2, 3, 4, 5, 6, 7 ,8, 9, 10]], axis=1)  # df.columns is zero-based pd.Index
+    data = convert_year_columns_to_one(data)
+
+    data['key_'] = data['Country Name'] + data['year'].astype(str)
+    protests = pd.read_csv(DATA_PATH + 'protests_location.csv')
+    protests['SQLDATE'] = protests['SQLDATE'].astype(str)
+    protests['SQLDATE'] = protests['SQLDATE'].str[0:6]
+    protests['ActionGeo_FullName'] = protests['ActionGeo_FullName'].str.split(', ').str[-1]
+    protests = protests.drop('ActionGeo_Lat', 1)
+    protests = protests.drop('ActionGeo_Long', 1)
+    protests=protests.groupby(['ActionGeo_FullName', 'SQLDATE']).agg(['count'])
+    protests = protests.reset_index()
+    protests = protests[protests['ActionGeo_FullName'] != ',']
+
+    protests=protests[protests['SQLDATE'].astype(int) > 201500]
+    protests=protests.sort_values(['ActionGeo_FullName','SQLDATE'])
+    protests.columns = ['Country Name', 'year', 'count']
+    protests['key_'] = protests['Country Name'] + protests['year'].astype(str)
+
+    for i in protests['key_'].unique():
+        if i in data['key_'].unique():
+            continue
+        else:
+            protests = protests[protests['key_'] != i]
+
+    temp_pro = protests[['key_','count']]
+    data_=pd.merge(data,temp_pro , how='right', on=['key_'])
+    country_pop_density = countries_all_stats[['Country Name','Pop. Density (per sq. mi.)']]
+    data_=pd.merge(data_,country_pop_density , how='right', on=['Country Name'])
+    data_ = data_.rename(columns={'Pop. Density (per sq. mi.)': 'pop_density'})
+    data_['log_pop_density'] = np.log(data_['pop_density'])
+
+    countries_region = pd.read_csv(DATA_PATH + 'countries_regions.csv')
+    data_ =pd.merge(data_,countries_region , how='right', left_on=['Country Name'], right_on=['name'])
+
+    sns.set_style("white")
+    new_data = data_
+    new_data['region']=pd.Categorical(new_data['region'])
+    new_data['region'].unique()
+    return new_data
+def convert_income_to_numerical(country_by_income_per_year):
+    country_by_income_per_year=country_by_income_per_year.dropna()
+
+    country_by_income_per_year=country_by_income_per_year.replace('Low income (L)', '-3')
+    country_by_income_per_year=country_by_income_per_year.replace('Lower middle income (LM)', '-1')
+    country_by_income_per_year=country_by_income_per_year.replace('Upper middle income (UM)', '1')
+    country_by_income_per_year=country_by_income_per_year.replace('High income (H)', '3')
+    country_by_income_per_year['Income Group']=country_by_income_per_year['Income Group'].astype(int)
+    return country_by_income_per_year
 
 def remove_randomly(df,n):
     drop_indices = np.random.choice(df.index, n, replace=False)
